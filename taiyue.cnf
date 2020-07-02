@@ -1,0 +1,51 @@
+[default]
+name = root-ca  
+default_ca = CA_default
+name_opt = ca_default
+cert_opt = ca_default
+
+[CA_default]
+home = .    
+database = $home/db/index
+serial = $home/db/serial
+crlnumber = $home/db/crlnumber
+certificate = $home/$name.crt
+private_key = $home/private/$name.key
+RANDFILE = $home/private/random
+new_certs_dir = $home/certs
+unique_subject = no
+copy_extensions = none
+default_days = 3650
+default_crl_days = 365
+default_md = sha256
+policy = policy_to_match
+
+[policy_to_match]
+countryName = match
+stateOrProvinceName = optional
+organizationName = match
+organizationalUnitName = optional
+commonName = supplied
+emailAddress = optional
+
+[CA_DN]
+countryName = "中国"
+contryName_default = "CN"
+organizationName = "泰岳"
+organizationName_default = "泰岳"
+commonName = "CN"
+commonName_default = "taiyue.com"
+
+[req]
+default_bits = 2048
+encrypt_key = no
+default_md = sha256
+utf8 = yes
+string_mask = utf8only
+distinguished_name = CA_DN
+req_extensions = ca_ext
+
+[ca_ext]
+basicConstraints = critical,CA:true
+keyUsage = critical,keyCertSign,cRLSign
+subjectKeyIdentifier = hash
