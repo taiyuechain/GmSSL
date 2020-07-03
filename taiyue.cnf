@@ -34,7 +34,7 @@ contryName_default = "CN"
 organizationName = "泰岳"
 organizationName_default = "泰岳"
 commonName = "CN"
-commonName_default = "taiyue.com"
+commonName_default = "taiyuechain.com"
 
 [req]
 default_bits = 2048
